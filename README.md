@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wafer Contour Studio
 
-## Getting Started
+Interactive 4-inch wafer mapping workspace built with Next.js, React, Observable Plot, and `kriging-rs-wasm`.
 
-First, run the development server:
+## Overview
+
+Wafer Contour Studio lets you:
+
+- edit wafer measurement points directly on the wafer map or in the point table
+- interpolate contour maps across a 100 mm wafer with an orientation flat
+- switch kriging variogram models and contour color palettes
+- export point data, kriging prediction data, and SVG images
+
+## Routes
+
+- `/` : landing page
+- `/workspace` : main wafer contour workspace
+
+## Development
+
+This project uses Vite+ as the command wrapper. Use `vp`, not `npm`, `pnpm`, or `yarn`.
+
+Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+vp install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+vp dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run formatting, lint, and type checks:
 
-## Learn More
+```bash
+vp check
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run tests:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+vp test
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Main Features
 
-## Deploy on Vercel
+- 4-inch wafer coordinate system with `x, y` in the range `-50 mm` to `50 mm`
+- wafer map with grid, rulers, cursor coordinates, and editable numbered points
+- contour plot clipped to the wafer boundary and orientation flat
+- multiple contour color palettes
+- paginated point table with direct page jump
+- JSON export/import for point data
+- separate JSON export for kriging prediction results
+- SVG export for wafer map and contour plot
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js App Router
+- React 19
+- Tailwind CSS 4
+- `@observablehq/plot`
+- `kriging-rs-wasm`
+
+## License
+
+MIT. See [LICENSE](./LICENSE).
