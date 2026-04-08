@@ -21,7 +21,7 @@ export const PointTable = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [jumpPage, setJumpPage] = useState("1");
   const [draftValues, setDraftValues] = useState<Record<string, string>>({});
-  const rowsPerPage = 10;
+  const [rowsPerPage, setRowsPerPage] = useState(20);
   const format3 = (value: number) => value.toFixed(3);
 
   const valueKeys = useMemo(
@@ -214,6 +214,23 @@ export const PointTable = ({
             : `${(safePage - 1) * rowsPerPage + 1}-${Math.min(safePage * rowsPerPage, points.length)} / ${points.length}`}
         </span>
         <div className="flex items-center gap-2">
+          <label className="flex items-center gap-2">
+            <span>Rows</span>
+            <select
+              value={String(rowsPerPage)}
+              onChange={(e) => {
+                setRowsPerPage(Number.parseInt(e.target.value, 10) || 20);
+                setCurrentPage(1);
+              }}
+              className="rounded border border-zinc-300 bg-white px-2 py-1 text-black"
+            >
+              {[10, 20, 50, 100].map((value) => (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              ))}
+            </select>
+          </label>
           <button
             type="button"
             onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}

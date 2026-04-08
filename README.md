@@ -1,20 +1,25 @@
-# Wafer Contour Studio
+# Wafer Visualization Studio
 
-Interactive 4-inch wafer mapping workspace built with Next.js, React, Observable Plot, and `kriging-rs-wasm`.
+Interactive wafer contour-map and mask-map tools built with Next.js, React, Observable Plot, and `kriging-rs-wasm`.
 
 ## Overview
 
-Wafer Contour Studio lets you:
+Wafer Visualization Studio lets you:
 
 - edit wafer measurement points directly on the wafer map or in the point table
 - interpolate contour maps across a 100 mm wafer with an orientation flat
 - switch kriging variogram models and contour color palettes
 - export point data, kriging prediction data, and SVG images
+- author wafer mask layouts from schema JSON or direct editing
+- visualize arbitrary numeric properties, composition ratios, and phases per opening
+- compare two mask-map views side by side as `Primary` and `Secondary`
+- load and save full mask-map projects as JSON
 
 ## Routes
 
 - `/` : landing page
-- `/workspace` : main wafer contour workspace
+- `/contour-map` : main wafer contour map editor
+- `/mask-map` : mask-layout-based wafer property map editor
 
 ## Development
 
@@ -46,14 +51,24 @@ vp test
 
 ## Main Features
 
+- `/contour-map`
 - 4-inch wafer coordinate system with `x, y` in the range `-50 mm` to `50 mm`
-- wafer map with grid, rulers, cursor coordinates, and editable numbered points
+- wafer map with grid, rulers, and editable numbered points
 - contour plot clipped to the wafer boundary and orientation flat
-- multiple contour color palettes
-- paginated point table with direct page jump
+- multiple kriging models and contour color palettes
+- paginated point table with `10 / 20 / 50 / 100` rows per page
 - JSON export/import for point data
 - separate JSON export for kriging prediction results
 - SVG export for wafer map and contour plot
+
+- `/mask-map`
+- schema-driven mask layout import plus direct manual opening editing
+- arbitrary numeric properties per opening, including default `thickness`
+- composition ratio editing, modal composition editing from the openings table, and multi-phase visualization
+- dual wafer views (`Primary` and `Secondary`) with independent mode/key/palette settings
+- hover tooltip with opening properties and inline opening selection / deletion modes
+- paginated openings table with `10 / 20 / 50 / 100` rows per page
+- project save/load, layout export, dataset export, and separate `Primary` / `Secondary` SVG and PNG export
 
 ## Stack
 

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { PointTable } from "./pointTable";
 import { Wafer } from "./wafer";
 import { PointProps, Points } from "./point";
-import { isInsideWafer, WAFER_MAP_PADDING } from "./waferGeometry";
+import { WAFER_MAP_PADDING } from "./waferGeometry";
 import { buildKrigingPrediction, loadKrigingModule } from "./krigingPrediction";
 import dynamic from "next/dynamic";
 import { contourColorPalettes, type ContourColorPalette } from "./contourPlot";
@@ -26,6 +26,16 @@ const variogramTypes = [
 
 const controlTabs = ["model", "values", "view", "data"] as const;
 const round3 = (value: number) => Math.round(value * 1000) / 1000;
+const NOMINAL_WAFER_RADIUS_MM = 50;
+const MIN_POINT_DISTANCE_MM = 0.5;
+const clampCoordinate = (value: number) =>
+  Math.max(-NOMINAL_WAFER_RADIUS_MM, Math.min(NOMINAL_WAFER_RADIUS_MM, value));
+const isInsideNominalWafer = (x: number, y: number) => Math.hypot(x, y) <= NOMINAL_WAFER_RADIUS_MM;
+const hasNearbyPoint = (points: PointProps[], x: number, y: number, excludeIndex?: number) =>
+  points.some((point, index) => {
+    if (excludeIndex != null && index === excludeIndex) return false;
+    return Math.hypot(point.x - x, point.y - y) < MIN_POINT_DISTANCE_MM;
+  });
 
 export const WaferVisualizer = ({ size, diameter }: WaferVisualizerProps) => {
   const [points, setPoints] = useState<Points>({ points: [] });
@@ -67,9 +77,10 @@ export const WaferVisualizer = ({ size, diameter }: WaferVisualizerProps) => {
 
     if (xPx < 0 || xPx > size || yPx < 0 || yPx > size) return;
 
-    const xFromCenter = (xPx - size / 2) / pxPerUnit;
-    const yFromCenter = (size / 2 - yPx) / pxPerUnit;
-    if (!isInsideWafer(xFromCenter, yFromCenter, diameter)) return;
+    const xFromCenter = clampCoordinate((xPx - size / 2) / pxPerUnit);
+    const yFromCenter = clampCoordinate((size / 2 - yPx) / pxPerUnit);
+    if (!isInsideNominalWafer(xFromCenter, yFromCenter)) return;
+    if (hasNearbyPoint(points.points, xFromCenter, yFromCenter)) return;
 
     const val = new Map<string, number>(
       valueKeys.map((key) => [key, key === "z" ? round3(Math.random()) : 0]),
@@ -95,10 +106,11 @@ export const WaferVisualizer = ({ size, diameter }: WaferVisualizerProps) => {
     const point = newPoints[pointIndex];
     const nextPoint = {
       ...point,
-      [axis]: round3(newValue),
+      [axis]: round3(clampCoordinate(newValue)),
     };
 
-    if (!isInsideWafer(nextPoint.x, nextPoint.y, diameter)) return;
+    if (!isInsideNominalWafer(nextPoint.x, nextPoint.y)) return;
+    if (hasNearbyPoint(newPoints, nextPoint.x, nextPoint.y, pointIndex)) return;
 
     newPoints[pointIndex] = nextPoint;
     setPoints({ points: newPoints });
@@ -333,10 +345,10 @@ export const WaferVisualizer = ({ size, diameter }: WaferVisualizerProps) => {
   const plotSize = Math.min(620, Math.max(size + 40, Math.round(size * 1.1)));
 
   return (
-    <div className="grid h-full w-full gap-4 xl:grid-cols-2 xl:grid-rows-2">
+    <div className="grid h-full w-full gap-4 xl:grid-cols-2 xl:grid-rows-[minmax(420px,1fr)_minmax(320px,auto)]">
       <div
         ref={waferTileRef}
-        className="min-h-[420px] min-w-0 rounded-2xl border border-zinc-300 bg-zinc-50 p-4"
+        className="min-h-[420px] min-w-0 overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-50 p-4"
       >
         <Wafer
           size={size}
@@ -347,7 +359,7 @@ export const WaferVisualizer = ({ size, diameter }: WaferVisualizerProps) => {
       </div>
       <div
         ref={contourTileRef}
-        className="flex min-h-[420px] min-w-0 flex-col rounded-2xl border border-zinc-300 bg-zinc-50 p-4"
+        className="flex min-h-[420px] min-w-0 flex-col overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-50 p-4"
       >
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-600">

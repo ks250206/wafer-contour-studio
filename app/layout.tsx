@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wafer Contour Studio",
-  description: "Interactive wafer contour mapping and kriging workspace.",
+  title: "Wafer Visualization Studio",
+  description: "Contour-map and mask-map tools for wafer visualization and analysis.",
 };
 
 export default function RootLayout({

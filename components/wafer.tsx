@@ -128,7 +128,7 @@ export const Wafer = ({ size, diameter, points, onWaferClick, className }: Wafer
           <text x={22} y={22} fontSize="11" fill="#18181b">
             ↑ y (mm)
           </text>
-          <text x={size - 14} y={size - 16} fontSize="11" fill="#18181b" textAnchor="end">
+          <text x={size - 14} y={size - 22} fontSize="11" fill="#18181b" textAnchor="end">
             x (mm) →
           </text>
           {pointsFiltered.map((point) => (

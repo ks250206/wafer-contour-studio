@@ -8,21 +8,32 @@ export default function Home() {
           Wafer Analysis
         </p>
         <h1 className="mt-4 max-w-2xl text-5xl font-semibold tracking-tight text-zinc-950">
-          Wafer Contour Studio
+          Wafer Visualization Studio
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-600">
-          Build 4-inch wafer maps, edit measurement points, and explore kriging-based contour
-          predictions from a single workspace.
+          Explore contour maps from wafer measurement points or build mask-layout-based wafer
+          property maps from JSON and direct editing.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
-            href="/workspace"
-            className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+            href="/contour-map"
+            className="inline-flex min-w-44 justify-center rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
           >
-            Open Workspace
+            Contour Map
           </Link>
           <p className="text-sm text-zinc-500">
-            Open the workspace for contour editing, kriging controls, and exports.
+            Edit measurement points, tune kriging controls, and export contour visuals.
+          </p>
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <Link
+            href="/mask-map"
+            className="inline-flex min-w-44 justify-center rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
+          >
+            Mask Map
+          </Link>
+          <p className="text-sm text-zinc-500">
+            Upload mask layout JSON, edit openings directly, and visualize arbitrary properties.
           </p>
         </div>
       </div>

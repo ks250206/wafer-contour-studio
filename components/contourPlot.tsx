@@ -10,54 +10,113 @@ export const contourColorPalettes = {
   turbo: {
     label: "Turbo",
     scheme: "turbo",
+    colors: [
+      "#30123b",
+      "#4145ab",
+      "#4675ed",
+      "#39a2fc",
+      "#1bcfd4",
+      "#6df36c",
+      "#c8ef34",
+      "#f9ba38",
+      "#e4450a",
+    ],
     gradient:
       "linear-gradient(to top, #30123b 0%, #4145ab 16%, #4675ed 32%, #39a2fc 48%, #1bcfd4 60%, #6df36c 72%, #c8ef34 84%, #f9ba38 92%, #e4450a 100%)",
   },
   viridis: {
     label: "Viridis",
     scheme: "viridis",
+    colors: [
+      "#440154",
+      "#482878",
+      "#3e4989",
+      "#31688e",
+      "#26828e",
+      "#1f9e89",
+      "#35b779",
+      "#6ece58",
+      "#b5de2b",
+      "#fde725",
+    ],
     gradient:
       "linear-gradient(to top, #440154 0%, #482878 20%, #3e4989 40%, #31688e 56%, #26828e 68%, #1f9e89 78%, #35b779 88%, #6ece58 94%, #b5de2b 98%, #fde725 100%)",
   },
   plasma: {
     label: "Plasma",
     scheme: "plasma",
+    colors: [
+      "#0d0887",
+      "#5b02a3",
+      "#9a179b",
+      "#cb4679",
+      "#ed7953",
+      "#fb9f3a",
+      "#fdca26",
+      "#f0f921",
+    ],
     gradient:
       "linear-gradient(to top, #0d0887 0%, #5b02a3 20%, #9a179b 40%, #cb4679 58%, #ed7953 76%, #fb9f3a 88%, #fdca26 96%, #f0f921 100%)",
   },
   cividis: {
     label: "Cividis",
     scheme: "cividis",
+    colors: ["#00204c", "#243b6b", "#43566c", "#62736a", "#859164", "#b3af5f", "#fee838"],
     gradient:
       "linear-gradient(to top, #00204c 0%, #243b6b 18%, #43566c 36%, #62736a 54%, #859164 72%, #b3af5f 88%, #fee838 100%)",
   },
   inferno: {
     label: "Inferno",
     scheme: "inferno",
+    colors: [
+      "#000004",
+      "#1b0c41",
+      "#4a0c6b",
+      "#781c6d",
+      "#a52c60",
+      "#cf4446",
+      "#ed6925",
+      "#fb9b06",
+      "#fcffa4",
+    ],
     gradient:
       "linear-gradient(to top, #000004 0%, #1b0c41 18%, #4a0c6b 34%, #781c6d 50%, #a52c60 64%, #cf4446 78%, #ed6925 90%, #fb9b06 96%, #fcffa4 100%)",
   },
   magma: {
     label: "Magma",
     scheme: "magma",
+    colors: [
+      "#000004",
+      "#180f3d",
+      "#440f76",
+      "#721f81",
+      "#9e2f7f",
+      "#cd4071",
+      "#f1605d",
+      "#fd9668",
+      "#fcfdbf",
+    ],
     gradient:
       "linear-gradient(to top, #000004 0%, #180f3d 18%, #440f76 36%, #721f81 52%, #9e2f7f 68%, #cd4071 82%, #f1605d 92%, #fd9668 97%, #fcfdbf 100%)",
   },
   cubehelix: {
     label: "Cubehelix",
     scheme: "cubehelix",
+    colors: ["#000000", "#163d4e", "#54792f", "#d07e93", "#c0b8ff", "#ffffff"],
     gradient:
       "linear-gradient(to top, #000000 0%, #163d4e 20%, #54792f 40%, #d07e93 62%, #c0b8ff 82%, #ffffff 100%)",
   },
   warm: {
     label: "Warm",
     scheme: "warm",
+    colors: ["#6e40aa", "#9c4ec4", "#c85ad6", "#e46cbe", "#f58c94", "#f6b26b", "#e6d74d"],
     gradient:
       "linear-gradient(to top, #6e40aa 0%, #9c4ec4 20%, #c85ad6 36%, #e46cbe 52%, #f58c94 68%, #f6b26b 84%, #e6d74d 100%)",
   },
   cool: {
     label: "Cool",
     scheme: "cool",
+    colors: ["#6e40aa", "#5d6fd3", "#4c94e6", "#3db7dd", "#32d1c0", "#58e39a", "#a4ee6f"],
     gradient:
       "linear-gradient(to top, #6e40aa 0%, #5d6fd3 20%, #4c94e6 38%, #3db7dd 54%, #32d1c0 70%, #58e39a 84%, #a4ee6f 100%)",
   },
