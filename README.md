@@ -23,7 +23,8 @@ Wafer Visualization Studio lets you:
 
 ## Development
 
-This project uses Vite+ as the command wrapper. Use `vp`, not `npm`, `pnpm`, or `yarn`.
+Use Node.js 26 LTS (26.13.0 or later in the 26.x series) and Vite+ 1.5 or later.
+Run project commands through `vp`.
 
 Install dependencies:
 
@@ -34,7 +35,7 @@ vp install
 Start the development server:
 
 ```bash
-vp dev
+vp run dev
 ```
 
 Run formatting, lint, and type checks:
@@ -47,6 +48,13 @@ Run tests:
 
 ```bash
 vp test
+```
+
+Build and serve the production app:
+
+```bash
+vp run build
+vp run start
 ```
 
 ## Main Features

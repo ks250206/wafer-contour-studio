@@ -99,8 +99,8 @@ describe("maskMapUtils", () => {
       phase: ["mix"],
     };
 
-    expect(collectNumericKeys(state)).toEqual(["resistivity", "thickness"]);
-    expect(collectCompositionKeys(state)).toEqual(["Al", "Si"]);
+    expect(collectNumericKeys(state)).toEqual(["thickness", "resistivity"]);
+    expect(collectCompositionKeys(state)).toEqual(["Si", "Al"]);
   });
 
   it("exports schema-compatible layout and dataset", () => {

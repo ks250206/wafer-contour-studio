@@ -216,7 +216,7 @@ export const WaferVisualizer = ({ size, diameter }: WaferVisualizerProps) => {
         nugget: number;
         sill: number;
         range: number;
-        shape: number;
+        shape?: number;
       };
       grid: Array<Array<number | null>>;
     } = null;
