@@ -4,6 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "preview": "vp preview",
+    "start": "vp preview",
+    "check": "vp check",
+    "lint": "vp lint",
+    "format": "vp fmt",
+    "typecheck": "vp exec tsc --noEmit",
+    "test": "vp test run",
+    "test:watch": "vp test --watch",
     "prepare": "vp config --no-agent"
   },
   "dependencies": {

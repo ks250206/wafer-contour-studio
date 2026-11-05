@@ -25,7 +25,6 @@ Wafer Visualization Studio lets you:
 ## Development
 
 Use Node.js 26 LTS (26.13.0 or later in the 26.x series) and Vite+ 1.5 or later.
-Run project commands through `vp`.
 
 Install dependencies:
 
@@ -33,30 +32,18 @@ Install dependencies:
 vp install
 ```
 
-Start the development server:
+The package scripts delegate to Vite+. Run them with `vp run <script>` or `pnpm run <script>`.
 
-```bash
-vp dev
-```
-
-Run formatting, lint, and type checks:
-
-```bash
-vp check
-```
-
-Run tests:
-
-```bash
-vp test
-```
-
-Build and preview the production app locally:
-
-```bash
-vp build
-vp preview
-```
+| Script               | Purpose                                                    |
+| -------------------- | ---------------------------------------------------------- |
+| `dev`                | Start the development server with hot reload               |
+| `build`              | Build the static site into `dist/`                         |
+| `preview`, `start`   | Preview the production build locally after running `build` |
+| `check`              | Check formatting, lint, and types                          |
+| `lint`               | Run Oxlint                                                 |
+| `format`             | Format source files                                        |
+| `typecheck`          | Run TypeScript without emitting files                      |
+| `test`, `test:watch` | Run tests once or watch for changes                        |
 
 ## Deployment
 
