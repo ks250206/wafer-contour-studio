@@ -1,14 +1,10 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { PointTable } from "./pointTable";
 import { Wafer } from "./wafer";
 import { PointProps, Points } from "./point";
 import { WAFER_MAP_PADDING } from "./waferGeometry";
 import { buildKrigingPrediction, loadKrigingModule } from "./krigingPrediction";
-import dynamic from "next/dynamic";
-import { contourColorPalettes, type ContourColorPalette } from "./contourPlot";
-
-const ContourPlot = dynamic(() => import("./contourPlot"), { ssr: false });
+import ContourPlot, { contourColorPalettes, type ContourColorPalette } from "./contourPlot";
 
 export interface WaferVisualizerProps {
   size: number;

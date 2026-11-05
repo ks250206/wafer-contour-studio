@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useMemo, useRef, useState } from "react";
 import { contourColorPalettes, type ContourColorPalette } from "./contourPlot";
 import { getWaferSvgPath, WAFER_MAP_PADDING } from "./waferGeometry";
@@ -183,7 +181,6 @@ const getCircleSectorPath = (
 };
 
 export const MaskMapEditor = ({ size }: MaskMapEditorProps) => {
-  const [isMounted, setIsMounted] = useState(false);
   const [state, setState] = useState<MaskMapEditorState>(() => createEmptyEditorState());
   const [view, setView] = useState<MaskMapProjectView>({
     mode: "numeric",
@@ -319,10 +316,6 @@ export const MaskMapEditor = ({ size }: MaskMapEditorProps) => {
     compositionKeys.length > 0
       ? compositionKeys
       : Object.keys(compositionModalDataset?.composition ?? {});
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!selectedOpening || !selectedDataset) {
@@ -1294,33 +1287,6 @@ export const MaskMapEditor = ({ size }: MaskMapEditorProps) => {
       </div>
     );
   };
-
-  if (!isMounted) {
-    return (
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_minmax(360px,0.75fr)] xl:grid-rows-[minmax(800px,auto)_minmax(320px,auto)]">
-        <div className="rounded-2xl border border-zinc-300 bg-zinc-50 p-4 xl:col-start-1 xl:row-start-1">
-          <div className="flex h-[520px] items-center justify-center rounded-xl border border-zinc-200 bg-white p-6 text-sm text-zinc-500">
-            Initializing mask map editor...
-          </div>
-        </div>
-        <div className="rounded-2xl border border-zinc-300 bg-zinc-50 p-4 xl:col-start-2 xl:row-start-1">
-          <div className="flex h-[320px] items-center justify-center rounded-xl border border-zinc-200 bg-white p-6 text-sm text-zinc-500">
-            Loading opening details...
-          </div>
-        </div>
-        <div className="rounded-2xl border border-zinc-300 bg-zinc-50 p-4 xl:col-start-1 xl:row-start-2">
-          <div className="flex h-[320px] items-center justify-center rounded-xl border border-zinc-200 bg-white p-6 text-sm text-zinc-500">
-            Loading controls...
-          </div>
-        </div>
-        <div className="rounded-2xl border border-zinc-300 bg-zinc-50 p-4">
-          <div className="flex h-[320px] items-center justify-center rounded-xl border border-zinc-200 bg-white p-6 text-sm text-zinc-500">
-            Loading openings...
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1.25fr)_minmax(360px,0.75fr)] xl:grid-rows-[minmax(800px,auto)_minmax(320px,auto)]">

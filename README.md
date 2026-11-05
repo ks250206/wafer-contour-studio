@@ -1,6 +1,6 @@
 # Wafer Visualization Studio
 
-Interactive wafer contour-map and mask-map tools built with Next.js, React, Observable Plot, and `kriging-rs-wasm`.
+Interactive wafer contour-map and mask-map tools built with Vite+, React, TanStack Router, Observable Plot, and `kriging-rs-wasm`.
 
 ## Overview
 
@@ -20,6 +20,7 @@ Wafer Visualization Studio lets you:
 - `/` : landing page
 - `/contour-map` : main wafer contour map editor
 - `/mask-map` : mask-layout-based wafer property map editor
+- `/workspace` : legacy URL that redirects to `/contour-map`
 
 ## Development
 
@@ -35,7 +36,7 @@ vp install
 Start the development server:
 
 ```bash
-vp run dev
+vp dev
 ```
 
 Run formatting, lint, and type checks:
@@ -50,12 +51,16 @@ Run tests:
 vp test
 ```
 
-Build and serve the production app:
+Build and preview the production app locally:
 
 ```bash
-vp run build
-vp run start
+vp build
+vp preview
 ```
+
+## Deployment
+
+Publish the generated `dist/` directory to a static host. Configure the host to serve existing files directly and fall back to `/index.html` for application routes so that opening or refreshing an editor URL works. Serve `.wasm` assets as `application/wasm`.
 
 ## Main Features
 
@@ -80,7 +85,7 @@ vp run start
 
 ## Stack
 
-- Next.js App Router
+- Vite+ and TanStack Router
 - React 19
 - Tailwind CSS 4
 - `@observablehq/plot`

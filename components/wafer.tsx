@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { PointProps } from "./point";
 import { getWaferSvgPath, WAFER_MAP_PADDING } from "./waferGeometry";
