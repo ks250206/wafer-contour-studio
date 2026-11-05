@@ -7,31 +7,28 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prepare": "vp config"
+    "prepare": "vp config --no-agent"
   },
   "dependencies": {
-    "@observablehq/plot": "^0.6.17",
-    "kriging-rs-wasm": "^0.2.2",
-    "next": "16.2.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "@observablehq/plot": "^0.6.18",
+    "kriging-rs-wasm": "0.4.0",
+    "next": "16.4.5",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.1",
-    "tailwindcss": "^4",
-    "typescript": "^5",
-    "vite-plus": "latest"
+    "@tailwindcss/postcss": "^4.3.4",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.5",
+    "tailwindcss": "^4.3.4",
+    "typescript": "~6.0.3",
+    "vite-plus": "1.5.0"
   },
-  "packageManager": "pnpm@10.33.0",
-  "pnpm": {
-    "overrides": {
-      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-    }
-  }
+  "engines": {
+    "node": "^26.13.0"
+  },
+  "packageManager": "pnpm@12.16.1"
 }

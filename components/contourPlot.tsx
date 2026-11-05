@@ -3,7 +3,12 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import { PointProps } from "./point";
 import { getWaferSvgPath } from "./waferGeometry";
-import { buildKrigingPrediction, loadKrigingModule, VariogramType } from "./krigingPrediction";
+import {
+  buildKrigingPrediction,
+  loadKrigingModule,
+  type KrigingModule,
+  type VariogramType,
+} from "./krigingPrediction";
 import * as Plot from "@observablehq/plot";
 
 export const contourColorPalettes = {
@@ -148,7 +153,7 @@ export default function ContourPlot({
   colorPalette = "turbo",
 }: ContourPlotProps) {
   const [wasmReady, setWasmReady] = useState(false);
-  const [krigingModule, setKrigingModule] = useState<any>(null);
+  const [krigingModule, setKrigingModule] = useState<KrigingModule | null>(null);
   const [error, setError] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const frameWidth = size + 96;

@@ -21,21 +21,19 @@ export interface KrigingPredictionResult {
     nugget: number;
     sill: number;
     range: number;
-    shape: number;
+    shape?: number;
   };
 }
 
-let krigingModulePromise: Promise<any> | null = null;
+export type KrigingModule = typeof import("kriging-rs-wasm");
+
+let krigingModulePromise: Promise<KrigingModule> | null = null;
 
 export const loadKrigingModule = async () => {
   if (!krigingModulePromise) {
     krigingModulePromise = (async () => {
       const mod = await import("kriging-rs-wasm");
-      const wasmBytes = await fetch("/wasm/kriging_rs_bg.wasm").then((r) => {
-        if (!r.ok) throw new Error("Failed to load wasm");
-        return r.arrayBuffer();
-      });
-      await mod.default(wasmBytes);
+      await mod.init();
       return mod;
     })();
   }
@@ -51,7 +49,7 @@ export const buildKrigingPrediction = ({
   valueKey,
   variogramType,
 }: {
-  krigingModule: any;
+  krigingModule: KrigingModule;
   points: PointProps[];
   diameter: number;
   gridSize: number;

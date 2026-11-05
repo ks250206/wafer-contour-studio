@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index d18192cee4091745ddb2a942efc23559c9a179be..ff33730ca7b49faf86803de7565d11aa275eb839 100644
+--- a/package.json
++++ b/package.json
+@@ -13,6 +13,7 @@
+   "jsdelivr": "dist/plot.umd.min.js",
+   "unpkg": "dist/plot.umd.min.js",
+   "exports": {
++    "types": "./src/index.d.ts",
+     "umd": "./dist/plot.umd.min.js",
+     "default": "./dist/plot.js"
+   },
