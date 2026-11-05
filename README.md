@@ -24,7 +24,7 @@ Wafer Visualization Studio lets you:
 
 ## Development
 
-Use Node.js 26 LTS (26.13.0 or later in the 26.x series) and Vite+ 1.5 or later.
+Use Node.js 26 LTS (26.13.0 or later in the 26.x series) and Vite+ 1.5 or later. Vite+ uses `.node-version` to select Node.js 26.x for this project.
 
 Install dependencies:
 
