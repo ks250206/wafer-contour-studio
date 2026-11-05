@@ -1,5 +1,3 @@
-"use client";
-
 import { PointProps } from "./point";
 import { isInsideWafer } from "./waferGeometry";
 

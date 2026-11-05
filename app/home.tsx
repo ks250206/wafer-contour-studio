@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@tanstack/react-router";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <Link
-            href="/contour-map"
+            to="/contour-map"
             className="inline-flex min-w-44 justify-center rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
           >
             Contour Map
@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <Link
-            href="/mask-map"
+            to="/mask-map"
             className="inline-flex min-w-44 justify-center rounded-full border border-zinc-300 bg-white px-6 py-3 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400"
           >
             Mask Map

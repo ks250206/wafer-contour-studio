@@ -1,6 +1,6 @@
 # Wafer Visualization Studio
 
-Interactive wafer contour-map and mask-map tools built with Next.js, React, Observable Plot, and `kriging-rs-wasm`.
+Interactive wafer contour-map and mask-map tools built with Vite+, React, TanStack Router, Observable Plot, and `kriging-rs-wasm`.
 
 ## Overview
 
@@ -20,11 +20,11 @@ Wafer Visualization Studio lets you:
 - `/` : landing page
 - `/contour-map` : main wafer contour map editor
 - `/mask-map` : mask-layout-based wafer property map editor
+- `/workspace` : legacy URL that redirects to `/contour-map`
 
 ## Development
 
 Use Node.js 26 LTS (26.13.0 or later in the 26.x series) and Vite+ 1.5 or later.
-Run project commands through `vp`.
 
 Install dependencies:
 
@@ -32,30 +32,22 @@ Install dependencies:
 vp install
 ```
 
-Start the development server:
+The package scripts delegate to Vite+. Run them with `vp run <script>` or `pnpm run <script>`.
 
-```bash
-vp run dev
-```
+| Script               | Purpose                                                    |
+| -------------------- | ---------------------------------------------------------- |
+| `dev`                | Start the development server with hot reload               |
+| `build`              | Build the static site into `dist/`                         |
+| `preview`, `start`   | Preview the production build locally after running `build` |
+| `check`              | Check formatting, lint, and types                          |
+| `lint`               | Run Oxlint                                                 |
+| `format`             | Format source files                                        |
+| `typecheck`          | Run TypeScript without emitting files                      |
+| `test`, `test:watch` | Run tests once or watch for changes                        |
 
-Run formatting, lint, and type checks:
+## Deployment
 
-```bash
-vp check
-```
-
-Run tests:
-
-```bash
-vp test
-```
-
-Build and serve the production app:
-
-```bash
-vp run build
-vp run start
-```
+Publish the generated `dist/` directory to a static host. Configure the host to serve existing files directly and fall back to `/index.html` for application routes so that opening or refreshing an editor URL works. Serve `.wasm` assets as `application/wasm`.
 
 ## Main Features
 
@@ -80,7 +72,7 @@ vp run start
 
 ## Stack
 
-- Next.js App Router
+- Vite+ and TanStack Router
 - React 19
 - Tailwind CSS 4
 - `@observablehq/plot`
