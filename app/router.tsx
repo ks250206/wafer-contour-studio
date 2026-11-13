@@ -1,5 +1,6 @@
 import {
   createRootRoute,
+  createHashHistory,
   createRoute,
   createRouter,
   lazyRouteComponent,
@@ -40,7 +41,10 @@ const routeTree = rootRoute.addChildren([
   }),
 ]);
 
-export const router = createRouter({ routeTree });
+export const router = createRouter({
+  routeTree,
+  history: import.meta.env.VITE_GITHUB_PAGES === "true" ? createHashHistory() : undefined,
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
