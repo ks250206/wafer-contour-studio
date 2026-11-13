@@ -2,6 +2,8 @@
 
 Interactive wafer contour-map and mask-map tools built with Vite+, React, TanStack Router, Observable Plot, and `kriging-rs-wasm`.
 
+**Live app:** [Wafer Visualization Studio](https://ks250206.github.io/wafer-contour-studio/)
+
 ## Overview
 
 Wafer Visualization Studio lets you:
@@ -47,7 +49,9 @@ The package scripts delegate to Vite+. Run them with `vp run <script>` or `pnpm 
 
 ## Deployment
 
-Publish the generated `dist/` directory to a static host. Configure the host to serve existing files directly and fall back to `/index.html` for application routes so that opening or refreshing an editor URL works. Serve `.wasm` assets as `application/wasm`.
+GitHub Actions deploys the site to GitHub Pages when changes reach `main`. The Pages build uses hash-based routes (for example, `/#/contour-map`) so links and page refreshes work on the static host.
+
+For another static host, publish the generated `dist/` directory and configure it to fall back to `/index.html` for application routes. Serve `.wasm` assets as `application/wasm`.
 
 ## Main Features
 
